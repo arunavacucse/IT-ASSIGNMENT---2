@@ -1,0 +1,47 @@
+<html>
+    <head>
+
+        <style >
+            body{
+                background-color: AntiqueWhite;
+            }
+            #image {
+                left: 5%;
+                top: 40%;
+            }
+        </style>
+
+        <script>
+            function Assgn(){
+                var res = document.getElementById("image");
+                var i = document.createElement("IMG");
+                var takeIpt = parseInt(document.getElementById("inputVal").value);
+                var child = res.childNodes;
+                var size = child.length;
+                var count = (size + 1).toString(10);
+                var attr = "Img-" + count + ".png";
+                i.src = attr;
+                i.height = 100;
+                i.width = 100;
+                if(size < takeIpt){
+                    res.appendChild(i);
+                    size++;
+                }
+                else if(size > takeIpt){
+                    res.removeChild(child[size - 1]);
+                    size--;
+                }
+                if(size !== takeIpt){
+                    setTimeout(Assgn,1000);
+                }
+            }
+        </script>
+
+    </head>
+    <body>
+        <h2>Enter an Integer Value between 1 - 9 :</h2>
+        <input id="inputVal" type="number" onkeypress="Assgn()">
+        <br>
+        <div id="image" style="height:120"></div>
+    </body>
+</html>
